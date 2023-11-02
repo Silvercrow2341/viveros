@@ -1,0 +1,50 @@
+/* Estilos para el footer */
+
+
+.my-footer {
+  color: #000000;
+  background-color: #035514ee;
+  /* Cambia el color de fondo al que desees */
+  /* Añade un espacio alrededor del contenido del footer */
+}
+
+.my-footer .info_container h6,
+.my-footer .info_link-box a {
+  color: #000000e7;
+  /* Cambia el color del texto a blanco */
+}
+
+.my-footer .info_link-box a:hover {
+  color: #ff9800;
+  /* Cambia el color del texto al hacer hover */
+}
+
+.my-footer .info_link-box a i {
+  margin-right: 5px;
+  /* Agrega un espacio entre el icono y el texto */
+}
+
+.my-footer .list-inline-item {
+  margin-right: 10px;
+  /* Agrega un espacio entre los elementos de la lista */
+}
+
+.my-footer .list-inline-item:last-child {
+  margin-right: 0;
+  /* Elimina el espacio del último elemento de la lista */
+}
+
+.my-footer .list-inline-item a {
+  font-size: 24px;
+  /* Ajusta el tamaño del ícono */
+}
+
+.my-footer .list-inline-item a:hover {
+  transform: scale(1.1);
+  /* Agrega un efecto de escala al hacer hover en los íconos */
+}
+
+.my-footer .copyright {
+  margin-top: 20px;
+  /* Agrega un espacio entre el contenido del footer y el texto de copyright */
+}

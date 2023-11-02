@@ -1,0 +1,119 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+<title>{%block title %} Inicio {% endblock %}</title>
+
+{% block background %} {% static 'core/img/11.jpeg' %} {% endblock %}
+
+{% block headers %} 
+    <h1>Vivero Los Ocobos</h1>
+    <span class="subheading"> Bienvenido </span> 
+{% endblock %}
+
+
+
+    {% block content %}
+
+    <style>.errorlist{color:red;}</style>
+    <div class="capa">
+        <main role="main">
+            <div class="container">
+                <div class="row mt-2">
+                    <div class="col-md-12 mx-auto mb-7">
+                        <form action="" method="post"> {% csrf_token %}
+                            <h3 class="mb-4">REGISTRO</h3>
+                            {{form.as_p}}
+                            <br>
+                            <h3 class="mb-2">TERMINOS Y CONDICIONES.</h3>
+                            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Leer terminos
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Terminos y condicones</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Al comprar un artículo, aceptas que:  eres responsable de leer el listado completo del artículo antes de comprometerte a comprarlo: celebras
+             un contrato legalmente vinculante para comprar un artículo cuando te comprometed a comprar un artículo y completar el proceso de check-out.<p><br>
+            Los precios que cobramos por usar nuestros servicios / para nuestros productos se enumeran en  la página web. Nos reservamos el derecho de cambiar 
+            nuestros precios para los productos que se muestran en cualquier momento y de corregir los errores de precios que pueden ocurrir inadvertidamente. 
+            Información adicional sobre precios e impuestos sobre las ventas está disponible en la página de pagos. 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkTerminos">
+                                <label class="form-check-label" for="checkTerminos">
+                                Acepto los términos y condiciones
+                                </label>
+                            </div>
+                            <p>
+                                <input id="btnConfirmar" type="submit" class="btn btn-primary btn-block" value="Confirmar" disabled>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <style>
+        
+
+
+
+        @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+        .capa{
+            width: 700px;
+            margin: auto !important;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            font-family: "Sans serif";
+            border-radius: 20px;
+            border: 1px solid #000000;
+        }
+  
+        h3{
+            font-size: 2em;
+            border-left: 5px solid rgb(0, 0, 0);
+            padding: 10px;
+            color: #000;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            font-weight: bold;
+            padding-left: 10px;
+            font-family: "Sans serif";
+        }
+  
+        input{
+            width: 100%;
+            border: 2px solid #000;
+            outline: none;
+            background: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+    
+    {% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+<title>{%block title %} Inicio {% endblock %}</title>
+
+{% block background %} {% static 'core/img/25.jpeg' %} {% endblock %}
+
+{% block headers %} 
+    <h1>Vivero Los Ocobos</h1>
+    <span class="subheading"> Bienvenido </span> 
+{% endblock %}
+
+
+
+    {% block content %}
+    
+    <style>.errorlist{color:red;}</style>
+    <div class="capa">
+      <main role="main">
+        <div class="container">
+          <div class="row mt-4">
+            <div class="col-md-12 mx-auto mb-4">
+              <form action="" method="post">{% csrf_token %}
+                <h3 class="mb-4">INICIAR SESIÓN</h3>
+                {% if 'register' in request.GET %}
+                  <div class="alert alert-success">
+                    <p>¡Usuario creado correctamente!</p>
+                  </div>
+                {% endif %}
+                {% if form.non_field_errors %}
+                  <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+                {% endif %}
+                <p>
+                  <input type="text" name="username" autofocus maxlength="254" required
+                    id="id_username" class="form-control" placeholder="Nombre de usuario"/>
+                </p>
+                <p>
+                  <input type="password" name="password" required
+                    id="id_password" class="form-control" placeholder="Contraseña"/>
+                </p>
+                <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+              </form>
+              <p>¿olvidaste tu contraseña? <a href="{% url 'password-reset' %}">restablecer contraseña</a></p>
+              <p>¿no tienes una cuenta? <a href="{% url 'signup' %}">Registrate aqui</a></p>
+            </div>
+          </div>
+        </div>
+      </main> 
+    </div>
+
+    <style>
+    @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+    .capa{
+        width: 600px;
+        margin: auto !important;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        
+        font-family: "Sans serif";
+        border-radius: 20px;
+        border: 1px solid #000000;
+    }
+    h3{
+        font-size: 2em;
+        border-left: 5px solid rgb(0, 0, 0);
+        padding: 10px;
+        color: #000;
+        letter-spacing: 3px;
+        margin-bottom: 60px;
+        font-weight: bold;
+        padding-left: 10px;
+        font-family: "Sans serif";
+    }
+    input{
+        width: 100%;
+        border: 2px solid #000;
+        outline: none;
+        background: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1.2em;
+        font-family: "Sans serif";
+    }
+    </style>
+    
+    {% endblock %}
+
+
+

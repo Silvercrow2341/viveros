@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+
+<title>{%block title %} Portafolio {% endblock %}</title>
+
+{% block background %} {% static 'core/img/51.jpeg' %} {% endblock %}
+
+{% block headers %} 
+    <h1> Vivero los Ocobos </h1>
+    <span class="subheading"> Aqui Podra Seleccionar Multiples Prodcutos a la vez y Ver Los detalles de Cada uno </span> 
+{% endblock %}
+
+
+{% block content %}
+
+    
+    <div  class="container pt-5" style="margin-top: 80px;">
+        <div class="form-group">
+          <label for="category-filter">Filtrar por categoría:</label>
+          <br>
+          <select id="category-filter" class="form-control">
+            <option value="">Todas las categorías</option>
+            {% for category in categoria %}
+              <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      
+        <table  id="data_table" class="table table-striped mt-3" style="width:100% ;">
+          <thead >
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Productos</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="product-table-body">
+      
+            {% for project in projects %}
+            <tr class="product-row" data-category="{{ project.categories.all.0.id }}">
+              <td>{{ project.title }}</td>
+              <td>{{ project.descripcion }}</td>
+              <td><img src="{{ project.image.url }}" alt="" style="width:50px;"></td>
+              <td>{{ project.categories.all|join:", " }}</td> 
+              <td>{{ project.price|floatformat:-1}}$-COP</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script>
+        // Function to toggle the product table visibility
+        function toggleProducts() {
+        var productTable = $('#data_table');
+        if (productTable.is(':visible')) {
+            productTable.hide();
+        } else {
+            productTable.show();
+        }
+        }
+    
+        // Attach the toggleProducts function to the click event of the toggle-products div
+        $('.toggle-products').on('click', function() {
+        toggleProducts();
+        });
+    
+        // Filter products based on category
+        $('#category-filter').on('change', function() {
+        var selectedCategoryId = $(this).val();
+    
+        if (selectedCategoryId === '') {
+            // Show all products if no category is selected
+            $('.product-row').show();
+        } else {
+            // Hide all products
+            $('.product-row').hide();
+    
+            // Show only products from the selected category
+            $('.product-row[data-category="' + selectedCategoryId + '"]').show();
+        }
+        });
+    
+        // Filter products by category initially
+        $('#category-filter').trigger('change');
+    
+        // Initialize the datatable with 25 rows per page
+        $(document).ready(function() {
+        $('#data_table').DataTable({
+            "pageLength": 25
+        });
+        });
+    </script>
+{% endblock %}

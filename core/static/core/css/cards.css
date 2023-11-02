@@ -1,0 +1,77 @@
+section{
+    width: 100%;
+    height: auto;
+}
+
+.container_portafolio{
+    width: 80%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    column-gap: 30px;
+    margin: auto;
+}
+
+.card{
+    width: 100% !important;
+    margin: 15px;
+    border-radius: 6px;
+}
+
+.formulario_con {
+    font-size: 40px;
+    text-align: center;
+    color: #0d7e099f;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #615d5d;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.btn-submit {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #037c2c8f;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #028f217c;
+}
+
+.boton_con{
+    text-align: center;
+} /*este es el div donde esta el boton*/
+

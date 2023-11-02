@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+<title>{%block title %} Productos {% endblock %}</title>
+
+{% block background %} {% static 'core/img/19.jpeg' %} {% endblock %}
+
+{% block headers %} 
+    <h1> Vivero los Ocobos</h1>
+    <span class="subheading">Nuestros productos </span> 
+{% endblock %}
+
+
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/productos.css' %}">
+
+
+            <div class="main-conten">
+
+                <!--Proyecto-->
+                    <div class="cont" >
+                {% for productos in product %}
+
+                        <div class="card" >
+                            <img src="{{ productos.image.url }}" class="" alt="">
+                            <div class="card-body" style="text-align:center;">
+                                <h5 class="card-title">{{productos.title}}</h5>
+                                <p class="card-text"></p>{{productos.descripcion}}</p>
+                                <p class="card-text"></p>{{ productos.price|floatformat:-1}}</p>
+                            </div>
+                            <a href="{% url 'carro:agregar' productos.id %}" class="btn btn-success" style="width: 200px; margin-left: 50px; font-size: large; "><i class="bi bi-cart-check-fill"></i>
+                            </a>
+                        </div>
+                        
+                        
+                        
+                        {% endfor %}
+                    </div>
+                    <div style="float: right;">
+                        {% if request.user.is_authenticated %}
+                            {% include "carro/widget.html" %}
+                        {% else %}
+                        <div class="alert alert-danger text-center" style="margin-top: 200px;">
+                            inicia sesion para ver el carro
+                          </div>
+                            
+                        {% endif %}
+                    </div>
+            </div>
+
+        <style>
+           .main-conten{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-inline: 25px;
+            column-gap: 25px;
+            row-gap: 50px;
+           }
+    .card{
+      width: 300px;
+      height: auto;
+        border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    padding-bottom: 20px;
+    }
+    .btn-success{
+        border-radius: 8px;
+    }
+    .cont{
+        width: 100%;
+        height: auto;
+       
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 15px;
+row-gap: 15px;
+
+    }
+        </style>
+        
+{% endblock %} 
+    
+

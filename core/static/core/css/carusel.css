@@ -1,0 +1,32 @@
+/* styles.css */
+
+/* Reduce el tamaño del carrusel */
+#carouselExampleCaptions {
+  max-width: 80%;
+  /* Ajusta este valor según tus preferencias */
+  margin: 0 auto;
+  /* Centra el carrusel en la página */
+}
+
+/* Asegúrate de que las imágenes dentro del carrusel se redimensionen correctamente */
+.carousel-inner img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Personaliza el tamaño del texto en los controles del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  font-size: 2rem;
+  /* Ajusta el tamaño de los íconos de navegación */
+}
+
+/* Personaliza el tamaño de los indicadores del carrusel */
+.carousel-indicators button {
+  width: 10px;
+  /* Ajusta el ancho de los indicadores */
+  height: 10px;
+  /* Ajusta la altura de los indicadores */
+  border-radius: 50%;
+  /* Crea indicadores circulares */
+}

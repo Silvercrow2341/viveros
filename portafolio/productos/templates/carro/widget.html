@@ -1,0 +1,102 @@
+{% load static %}
+<table class="table table-bordered" style="color: gray;">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/msg.css' %}">
+
+    <thead>
+        <tr>
+
+            <th colspan="3" class="text-center">
+
+                Carro Compras
+            
+            </th>
+        
+        </tr>
+
+        <tr>
+
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Suma</th>
+        
+        </tr>
+
+    <thead>
+
+    <tbody>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+
+                <tr class="text-center">
+
+                    <td>{{value.nombre}}</td>
+                    <td>{{value.cantidad}}</td>
+                    <td>
+
+                        <a href="{% url 'carro:agregar' value.productos_id %}" class="btn btn-sm btn-success"> + </a>
+                        <a href="{% url 'carro:restar' value.productos_id %}" class="btn btn-sm btn-success"> - </a> <br/>
+
+                        {{value.precio|floatformat:-1}} $-COP
+
+                    </td>
+                    
+                </tr>
+
+            {% endfor %}
+
+        {% else %}
+            <tr>
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">
+                        Sin Productos
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">
+
+                Total: {{importe_total_carro|floatformat:-1}} $-COP
+
+            </td>
+        </tr>
+        {% if request.session.carro.items %}
+        <tr>
+            <td colspan="3" style="text-align: center;">
+                <a href="../pedidos"  class="btn btn-success">Comprar</a>
+            </td>
+        </tr>
+        {% endif %}
+    </tfoot>
+    {% if messages %}
+    <ul class="messages" >
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</table>
+<style>
+   .table-bordered {
+        border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    padding-bottom: 20px;
+    }
+    thead > tr{
+        background-color: #3d3d3d;
+        color: #fff;
+    }
+    .btn-sm{
+        height: 25px;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    tbody,tfoot{
+        color: #000;
+    }
+</style>
